@@ -1,0 +1,4 @@
+repository "Duo Project@nikoloztandilashvili@cloud"
+  path "/"
+    br "/main"
+    co "/main"
