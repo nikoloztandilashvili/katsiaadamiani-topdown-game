@@ -6,34 +6,54 @@ using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
 {
-    Rigidbody2D rb;
-    private float swiftness =3;
+    BoxCollider2D boxCollider;
+    private float swiftness = 3;
     private bool facingRight;
-    // Start is called before the first frame update
-    void Start()
+    private RaycastHit2D hit;
+    private Vector3 moveDelta;
+
+    private void Start()
     {
-       rb = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
+
         //movements
-        float movementy = Input.GetAxis("Vertical");
-        float movementx = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(movementx * swiftness, movementy * swiftness);
+        float y = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal");
+        moveDelta = new Vector3(x * swiftness, y * swiftness, 0);
+
 
         //facingDirection
-        if (Input.GetKeyDown(KeyCode.A))
+        if (moveDelta.x < 0)
         {
             facingRight = false;
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (moveDelta.x > 0)
         {
             facingRight = true;
         }
-        if(facingRight) { transform.localScale = new Vector3(-1, 1, 1); }
+
+
+
+        if (facingRight) { transform.localScale = new Vector3(-1, 1, 1); }
         else { transform.localScale = new Vector3(1, 1, 1); }
-        
+
+        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
+        if (hit.collider == null)
+        {
+            transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
+        }
+
+
+        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
+        if (hit.collider == null)
+        {
+            transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
+        }
+
+
     }
 }
