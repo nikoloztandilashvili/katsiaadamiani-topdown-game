@@ -32,12 +32,8 @@ public class Movement : MonoBehaviour
         {
             facingRight = true;
         }
-        else if (Input.GetKeyDown(KeyCode.A)&& Input.GetKeyDown(KeyCode.D))
-        {
-            facingRight = false;
-        }
         if(facingRight) { transform.localScale = new Vector3(-1, 1, 1); }
         else { transform.localScale = new Vector3(1, 1, 1); }
-
+        
     }
 }
