@@ -44,6 +44,15 @@ TagManager:
   - name: Floor
     uniqueID: 1646216073
     locked: 0
+  - name: houses
+    uniqueID: 3433642275
+    locked: 0
+  - name: Design
+    uniqueID: 2760827959
+    locked: 0
   - name: Actor
     uniqueID: 1256907191
+    locked: 0
+  - name: BackDesign
+    uniqueID: 985493645
     locked: 0
