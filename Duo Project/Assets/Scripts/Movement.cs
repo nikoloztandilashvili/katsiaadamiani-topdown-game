@@ -6,13 +6,24 @@ public class Movement : MonoBehaviour
 {
     private BoxCollider2D boxCollider;
     private float swiftness = 3;
-    private bool facingRight = true; // Initialize facing direction
+     bool facingRight = true; // Initialize facing direction
     private RaycastHit2D hit;
     private Vector3 moveDelta;
+    FloatingTextManager floatingTextManager;
+
+
+
+    public bool setFacingRight(bool a)
+    {
+        return facingRight;
+    }
+
 
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        //ShowText("marcxniv midids", 50, Color.blue, transform.position, Vector3.up * 50, 3.0f);
+        floatingTextManager.show("marcxniv midids", 50, Color.blue, transform.position, Vector3.up * 50, 3.0f);
     }
 
     private void FixedUpdate()
