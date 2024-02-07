@@ -9,8 +9,8 @@ public class Movement : MonoBehaviour
      bool facingRight = true; // Initialize facing direction
     private RaycastHit2D hit;
     private Vector3 moveDelta;
-    FloatingTextManager floatingTextManager;
-   
+    
+
 
 
     public bool setFacingRight(bool a)
@@ -23,11 +23,8 @@ public class Movement : MonoBehaviour
     {
        
         boxCollider = GetComponent<BoxCollider2D>();
-
-        /* floatingTextManager = GetComponent<FloatingTextManager>();*/ // Instantiate your manager
-        GameManager.instance.ShowText("marcxniv midids", 50, Color.blue, transform.position, Vector3.up * 50, 3.0f);
-        //ShowText("marcxniv midids", 50, Color.blue, transform.position, Vector3.up * 50, 3.0f);
-        //floatingTextManager.show("marcxniv midids", 50, Color.blue, transform.position, Vector3.up * 50, 3.0f);
+        
+        Debug.Log(transform.position.x + "  " + transform.position.y + "  " + transform.position.z);
     }
 
     private void FixedUpdate()

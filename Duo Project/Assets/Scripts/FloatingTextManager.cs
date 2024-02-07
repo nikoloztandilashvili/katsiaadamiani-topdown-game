@@ -9,19 +9,26 @@ public class FloatingTextManager : MonoBehaviour
     public GameObject textPrefab;
 
     private List<FloatingText> floatingTexts = new List<FloatingText>();
+    Camera cam;
 
-    public void show(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
+    public void Start()
+    {
+       cam = FindObjectOfType<Camera>();
+    }
+
+    public void Show(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
     {
         FloatingText floatingText = GetFloatingText();
 
         floatingText.txt.text = msg;
         floatingText.txt.fontSize = fontSize;
         floatingText.txt.color = color;
-        floatingText.go.transform.position = Camera.main.WorldToScreenPoint(position);
+        floatingText.go.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(position.x + 1050, position.y+400, 0));
         floatingText.motion = motion;
         floatingText.duration = duration;
 
         floatingText.Show();
+        
     }
 
     private FloatingText GetFloatingText()
@@ -33,6 +40,7 @@ public class FloatingTextManager : MonoBehaviour
             txt = new FloatingText();
             txt.go = Instantiate(textPrefab);
             txt.go.transform.SetParent(textContainer.transform);
+            txt.go.transform.localScale = new Vector3(1, 1, 1);
             txt.txt = txt.go.GetComponent<Text>();
 
             floatingTexts.Add(txt);
