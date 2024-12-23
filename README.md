@@ -1,7 +1,7 @@
-# კაცია ადამიანი?! - A Top-Down Pixel Art Game
+# kacia adamiani?! - A Top-Down Pixel Art Game
 
 ## Overview
-**კაცია ადამიანი?!** is a top-down pixel art game inspired by the famous Georgian story by Ilia Chavchavadze. The game explores themes of identity and humanity through engaging gameplay and storytelling.
+**kacia adamiani?!** is a top-down pixel art game inspired by the famous Georgian story by Ilia Chavchavadze. The game explores themes of identity and humanity through engaging gameplay and storytelling.
 
 ## Features
 - **Pixel Art Style**: Enjoy a visually appealing pixelated aesthetic.
